@@ -1,1 +1,2 @@
-{{$rar}}
+logeo exitoso
+Bienvenido Usuario: {{$rar}}

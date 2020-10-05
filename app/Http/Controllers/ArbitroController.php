@@ -14,7 +14,7 @@ class ArbitroController extends Controller
      */
     public function index()
     {
-        return view('InicioDeSession');
+       return view('InicioDeSession');
     }
 
     /**
@@ -24,7 +24,27 @@ class ArbitroController extends Controller
      */
     public function create()
     {
-        //
+        request()->validate([
+            'nombreUsuario'=>'required',
+            'apellidosUsuario'=>'required',
+            'nicknameUsuario'=>'required',
+            'emailUsuario'=>'required',
+            'fechanacUsuario'=>'required',
+            'passwordUsuario'=>'required',
+            'confirmarPasswordUsuario'=>'required|same:passwordUsuario'
+         ]);
+
+
+         $usuario=new usuario;
+         $usuario->nombre= request('nombreUsuario');    
+         $usuario->apellido= request('apellidosUsuario');
+         $usuario->email= request('emailUsuario');
+         $usuario->FechaNac= request('fechanacUsuario');
+         $usuario->contrasenia= request('passwordUsuario');
+         $usuario->nickname= request('nicknameUsuario');
+         $usuario->save();
+
+         return 'completado';
     }
 
     /**

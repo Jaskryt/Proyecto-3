@@ -14,6 +14,11 @@ use App\Http\Controllers\ArbitroController;
 |
 */
 
-Route::view('/','home');
-Route::get('/Login', [ArbitroController::class, 'index'])->name('RIniciarSesion');
-Route::post('/Logeo', [ArbitroController::class, 'show'])->name('Riniciar');
+	Route::view('/','home')->name('home');
+	Route::get('/Login', [ArbitroController::class, 'index'])->name('RIniciarSesion');
+	Route::post('/Logeo', [ArbitroController::class, 'show'])->name('Riniciar');
+
+	//ruta de enlace de registro-direccion entrada-direccion salida-nombre identificador 
+	Route::view('/Registro','Registro')->name('Registro');
+	//cuando se realiza un post- direccion from post- controlador a ejecutar con su funcion
+	Route::post('Registro','App\Http\Controllers\ArbitroController@create');
